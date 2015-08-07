@@ -10,6 +10,8 @@
 		613DF09A1B74CFD80003F595 /* RSClipperWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 613DF0991B74CFD80003F595 /* RSClipperWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		613DF0A11B74CFD80003F595 /* RSClipperWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613DF0961B74CFD80003F595 /* RSClipperWrapper.framework */; };
 		613DF0A61B74CFD80003F595 /* RSClipperWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613DF0A51B74CFD80003F595 /* RSClipperWrapperTests.swift */; };
+		61643F9F1B74D29300989DD4 /* clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61643F9D1B74D29300989DD4 /* clipper.cpp */; };
+		61643FA01B74D29300989DD4 /* clipper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 61643F9E1B74D29300989DD4 /* clipper.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		613DF0A01B74CFD80003F595 /* RSClipperWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSClipperWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		613DF0A51B74CFD80003F595 /* RSClipperWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSClipperWrapperTests.swift; sourceTree = "<group>"; };
 		613DF0A71B74CFD80003F595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61643F9D1B74D29300989DD4 /* clipper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = clipper.cpp; path = "Clipper 6.2.1/clipper.cpp"; sourceTree = "<group>"; };
+		61643F9E1B74D29300989DD4 /* clipper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = clipper.hpp; path = "Clipper 6.2.1/clipper.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		613DF0981B74CFD80003F595 /* RSClipperWrapper */ = {
 			isa = PBXGroup;
 			children = (
+				61643F981B74D1DD00989DD4 /* Clipper 6.2.1 */,
 				613DF0991B74CFD80003F595 /* RSClipperWrapper.h */,
 				613DF09B1B74CFD80003F595 /* Info.plist */,
 			);
@@ -86,6 +91,15 @@
 			path = RSClipperWrapperTests;
 			sourceTree = "<group>";
 		};
+		61643F981B74D1DD00989DD4 /* Clipper 6.2.1 */ = {
+			isa = PBXGroup;
+			children = (
+				61643F9D1B74D29300989DD4 /* clipper.cpp */,
+				61643F9E1B74D29300989DD4 /* clipper.hpp */,
+			);
+			name = "Clipper 6.2.1";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -93,6 +107,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61643FA01B74D29300989DD4 /* clipper.hpp in Headers */,
 				613DF09A1B74CFD80003F595 /* RSClipperWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61643F9F1B74D29300989DD4 /* clipper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
