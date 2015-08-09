@@ -14,10 +14,10 @@
 -(void)append:(CGPoint)point;
 -(void)insert:(CGPoint)point atIndex:(int)index;
 
--(NSValue *)objectAtIndex:(int)index;
+-(NSValue *)valueAtIndex:(int)index;
 
--(void)removeLast;
--(void)removeAtIndex:(int)index;
+-(CGPoint)removeLast;
+-(CGPoint)removeAtIndex:(int)index;
 -(void)removeAll;
 
 @property(readonly) NSUInteger count;

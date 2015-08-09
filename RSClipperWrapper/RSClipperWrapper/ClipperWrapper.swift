@@ -8,7 +8,7 @@
 
 // MARK: Polygon
 
-public class Polygon : ArrayLiteralConvertible {
+final public class Polygon : ArrayLiteralConvertible {
     
     // MARK: Associated types
     
@@ -34,31 +34,31 @@ public class Polygon : ArrayLiteralConvertible {
     
     private var _polygon: _Polygon
     
-    var area: CGFloat { return _polygon.area }
+    public var area: CGFloat { return _polygon.area }
     
     // MARK: Instance methods
     
-    func append(point: CGPoint) {
+    public func append(point: CGPoint) {
         _polygon.append(point)
     }
     
-    func insert(point: CGPoint, atIndex i: Int) {
+    public func insert(point: CGPoint, atIndex i: Int) {
         _polygon.insert(point, atIndex: Int32(i))
     }
     
-    func removeLast() -> CGPoint {
+    public func removeLast() -> CGPoint {
         let point = self[count-1]
         _polygon.removeLast()
         return point
     }
     
-    func removeAtIndex(index: Int) -> CGPoint {
+    public func removeAtIndex(index: Int) -> CGPoint {
         let point = self[index]
         _polygon.removeAtIndex(Int32(index))
         return point
     }
     
-    func removeAll() {
+    public func removeAll() {
         _polygon.removeAll()
     }
 }
@@ -90,8 +90,11 @@ extension Polygon : MutableCollectionType {
     public var endIndex: Index { return Int(_polygon.count) }
     
     public subscript(position: Index) -> Generator.Element {
-        set { insert(newValue, atIndex: position) }
-        get { return _polygon.objectAtIndex(Int32(position)).CGPointValue() }
+        set {
+            removeAtIndex(position)
+            insert(newValue, atIndex: position)
+        }
+        get { return _polygon.valueAtIndex(Int32(position)).CGPointValue() }
     }
     
     public var count: Index.Distance { return endIndex }
@@ -110,37 +113,53 @@ extension Polygon : CustomStringConvertible, CustomDebugStringConvertible {
 
 // MARK: Clipper
 
-public class Clipper {
+final public class Clipper {
     
-    class func unionPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
+    public class func unionPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
         return unionPolygons([polygon1], withPolygons: [polygon2])
     }
     
-    class func unionPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
-        return _Clipper.unionPolygons(polygons1, withPolygons: polygons2) as! [Polygon]
+    public class func unionPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
+        return _Clipper.unionPolygons(polygons1.map { $0._polygon }, withPolygons: polygons2.map { $0._polygon }).map {
+            let polygon = Polygon()
+            polygon._polygon = $0 as! _Polygon
+            return polygon
+        }
     }
     
-    class func differencePolygon(polygon1: Polygon, fromPolygon polygon2: Polygon) -> [Polygon] {
+    public class func differencePolygon(polygon1: Polygon, fromPolygon polygon2: Polygon) -> [Polygon] {
         return differencePolygons([polygon1], fromPolygons: [polygon2])
     }
     
-    class func differencePolygons(polygons1: [Polygon], fromPolygons polygons2: [Polygon]) -> [Polygon] {
-        return _Clipper.differencePolygons(polygons1, fromPolygons: polygons2) as! [Polygon]
+    public class func differencePolygons(polygons1: [Polygon], fromPolygons polygons2: [Polygon]) -> [Polygon] {
+        return _Clipper.differencePolygons(polygons1.map { $0._polygon }, fromPolygons: polygons2.map { $0._polygon }).map {
+            let polygon = Polygon()
+            polygon._polygon = $0 as! _Polygon
+            return polygon
+        }
     }
     
-    class func intersectPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
+    public class func intersectPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
         return intersectPolygons([polygon1], withPolygons: [polygon2])
     }
     
-    class func intersectPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
-        return _Clipper.intersectPolygons(polygons1, withPolygons: polygons2) as! [Polygon]
+    public class func intersectPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
+        return _Clipper.intersectPolygons(polygons1.map { $0._polygon }, withPolygons: polygons2.map { $0._polygon }).map {
+            let polygon = Polygon()
+            polygon._polygon = $0 as! _Polygon
+            return polygon
+        }
     }
     
-    class func xorPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
+    public class func xorPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
         return xorPolygons([polygon1], withPolygons: [polygon2])
     }
     
-    class func xorPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
-        return _Clipper.xorPolygons(polygons1, withPolygons: polygons2) as! [Polygon]
+    public class func xorPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
+        return _Clipper.xorPolygons(polygons1.map { $0._polygon }, withPolygons: polygons2.map { $0._polygon }).map {
+            let polygon = Polygon()
+            polygon._polygon = $0 as! _Polygon
+            return polygon
+        }
     }
 }

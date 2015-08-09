@@ -9,10 +9,12 @@
 #import "ClipperWrapper.h"
 
 #include "clipper.hpp"
+#include <cmath>
 
 #define kClipperScale 1000000.0f
 
-@implementation _Polygon {
+@implementation _Polygon
+{
     @public
     ClipperLib::Path _path;
 }
@@ -26,17 +28,21 @@
     _path.insert(it, ClipperLib::IntPoint(kClipperScale*point.x, kClipperScale*point.y));
 }
 
--(NSValue *)objectAtIndex:(int)index {
+-(NSValue *)valueAtIndex:(int)index {
     CGPoint point = CGPointMake(_path[index].X/kClipperScale, _path[index].Y/kClipperScale);
     return [NSValue valueWithCGPoint:point];
 }
 
--(void)removeLast {
+-(CGPoint)removeLast {
+    CGPoint point = [self valueAtIndex:(int) self.count-1].CGPointValue;
     _path.pop_back();
+    return point;
 }
 
--(void)removeAtIndex:(int)index {
+-(CGPoint)removeAtIndex:(int)index {
+    CGPoint point = [self valueAtIndex:index].CGPointValue;
     _path.erase(_path.begin()+index);
+    return point;
 }
 
 -(void)removeAll {
@@ -48,7 +54,7 @@
 }
 
 -(CGFloat)area {
-    return ClipperLib::Area(_path)/kClipperScale/kClipperScale;
+    return std::abs(ClipperLib::Area(_path))/kClipperScale/kClipperScale;
 }
 
 @end
@@ -56,6 +62,7 @@
 @implementation _Clipper
 
 + (NSArray *) unionPolygons:(NSArray *)polygons1 withPolygons:(NSArray *)polygons2 {
+    printf("3");
     return [_Clipper executePolygons:polygons1 withPolygons:polygons2 andClipType:ClipperLib::ClipType::ctUnion];
 }
 
@@ -75,11 +82,11 @@
     ClipperLib::Clipper _clipper;
     _clipper.StrictlySimple();
     
-    for (_Polygon *polygon in polygons1) {
+    for (_Polygon *polygon : polygons1) {
         _clipper.AddPath(polygon->_path, ClipperLib::PolyType::ptSubject, YES);
     }
     
-    for (_Polygon *polygon in polygons2) {
+    for (_Polygon *polygon : polygons2) {
         _clipper.AddPath(polygon->_path, ClipperLib::PolyType::ptClip, YES);
     }
     
