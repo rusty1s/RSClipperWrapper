@@ -12,6 +12,9 @@
 		613DF0A61B74CFD80003F595 /* RSClipperWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613DF0A51B74CFD80003F595 /* RSClipperWrapperTests.swift */; };
 		61643F9F1B74D29300989DD4 /* clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61643F9D1B74D29300989DD4 /* clipper.cpp */; };
 		61643FA01B74D29300989DD4 /* clipper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 61643F9E1B74D29300989DD4 /* clipper.hpp */; };
+		61643FA21B74D59800989DD4 /* ClipperWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 61643FA11B74D59800989DD4 /* ClipperWrapper.mm */; };
+		61643FA51B74D5D700989DD4 /* ClipperWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61643FA41B74D5D700989DD4 /* ClipperWrapper.swift */; };
+		61643FA71B74EB2600989DD4 /* ClipperWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 61643FA31B74D5AC00989DD4 /* ClipperWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,9 @@
 		613DF0A71B74CFD80003F595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61643F9D1B74D29300989DD4 /* clipper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = clipper.cpp; path = "Clipper 6.2.1/clipper.cpp"; sourceTree = "<group>"; };
 		61643F9E1B74D29300989DD4 /* clipper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = clipper.hpp; path = "Clipper 6.2.1/clipper.hpp"; sourceTree = "<group>"; };
+		61643FA11B74D59800989DD4 /* ClipperWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ClipperWrapper.mm; sourceTree = "<group>"; };
+		61643FA31B74D5AC00989DD4 /* ClipperWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClipperWrapper.h; sourceTree = "<group>"; };
+		61643FA41B74D5D700989DD4 /* ClipperWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipperWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				61643F981B74D1DD00989DD4 /* Clipper 6.2.1 */,
+				61643FA31B74D5AC00989DD4 /* ClipperWrapper.h */,
+				61643FA11B74D59800989DD4 /* ClipperWrapper.mm */,
+				61643FA41B74D5D700989DD4 /* ClipperWrapper.swift */,
 				613DF0991B74CFD80003F595 /* RSClipperWrapper.h */,
 				613DF09B1B74CFD80003F595 /* Info.plist */,
 			);
@@ -108,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61643FA01B74D29300989DD4 /* clipper.hpp in Headers */,
+				61643FA71B74EB2600989DD4 /* ClipperWrapper.h in Headers */,
 				613DF09A1B74CFD80003F595 /* RSClipperWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +167,7 @@
 		613DF08D1B74CFD80003F595 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Matthias Fey";
 				TargetAttributes = {
@@ -209,6 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				61643F9F1B74D29300989DD4 /* clipper.cpp in Sources */,
+				61643FA21B74D59800989DD4 /* ClipperWrapper.mm in Sources */,
+				61643FA51B74D5D700989DD4 /* ClipperWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +336,7 @@
 		613DF0AB1B74CFD80003F595 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -333,12 +347,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rusty1s.RSClipperWrapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		613DF0AC1B74CFD80003F595 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -349,6 +366,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rusty1s.RSClipperWrapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
