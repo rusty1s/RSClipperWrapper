@@ -11,7 +11,7 @@
 
 ## Example
 
-1. Construct `Polygon` classes: `let polygon1: Polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 10, y: 10), CGPoint(x: 20, 0)]`
+1. Construct `Polygon` classes, e.g.: `let polygon1: Polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 10, y: 10), CGPoint(x: 20, 0)]`
 2. Use on of the static functions of the `Clipper` class to perform a polygon clipping, e.g.: `Clipper.intersectPolygon(polygon1, withPolygon: polygon2)`
 3. That's it!
 
@@ -42,9 +42,10 @@ A `Polygon` is an ordered list that contains elements of type `CGPoint`. The `Po
 #### Protocol inheritance
 
 * `SequenceType`
+* `CollectionType`
 * `MutableCollectionType`
 * `ArrayLiteralConvertible`
-* `CustomStringConvertible/CustomDebugStringConvertible` 
+* `CustomStringConvertible`/`CustomDebugStringConvertible` 
 
 ### Clipper
 
