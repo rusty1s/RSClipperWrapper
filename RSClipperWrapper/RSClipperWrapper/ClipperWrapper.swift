@@ -8,6 +8,9 @@
 
 // MARK: Polygon
 
+/// A `Polygon` is an ordered list that contains elements of type `CGPoint`.
+/// The `Polygon` class is built as a wrapper of `std::vector` in C++ and
+/// therefore should not be used otherwise as clipping polygons.
 final public class Polygon : ArrayLiteralConvertible {
     
     // MARK: Associated types
@@ -121,6 +124,9 @@ extension Polygon : CustomStringConvertible, CustomDebugStringConvertible {
 
 // MARK: Clipper
 
+/// The `Clipper` class performs polygon clipping - intersection, union,
+/// difference & exclusive-or. `Clipper` is built as a wrapper of the open source
+/// Clipper library written in C++ by Angus Johnson.
 final public class Clipper {
     
     /// Constructs and returns the union of a polygon with a polygon.
