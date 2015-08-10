@@ -12,19 +12,23 @@ final public class Polygon : ArrayLiteralConvertible {
     
     // MARK: Associated types
     
+    /// The type of element stored by this `Polygon`.
     public typealias Element = CGPoint
     
     // MARK: Initializers
     
+    /// Construct an empty Polygon.
     public init() {
         _polygon = _Polygon()
     }
     
+    /// Construct from an arbitrary sequence with elements of type `CGPoint`.
     public convenience init<S : SequenceType where S.Generator.Element == CGPoint>(_ sequence: S) {
         self.init()
         for element in sequence { append(element) }
     }
     
+    /// Create an instance containing elements.
     public required convenience init(arrayLiteral elements: Element...) {
         self.init()
         for element in elements { append(element) }
@@ -34,30 +38,36 @@ final public class Polygon : ArrayLiteralConvertible {
     
     private var _polygon: _Polygon
     
+    /// The area of the Polygon.
     public var area: CGFloat { return _polygon.area }
     
     // MARK: Instance methods
     
+    /// Append a `CGPoint` to the Polygon.
     public func append(point: CGPoint) {
         _polygon.append(point)
     }
     
+    /// Insert a `CGPoint` at index `i`.
     public func insert(point: CGPoint, atIndex i: Int) {
         _polygon.insert(point, atIndex: Int32(i))
     }
     
+    /// Remove a point from the end of the Polygon in O(1).
     public func removeLast() -> CGPoint {
         let point = self[count-1]
         _polygon.removeLast()
         return point
     }
     
+    /// Remove and return the point at index `i`.
     public func removeAtIndex(index: Int) -> CGPoint {
         let point = self[index]
         _polygon.removeAtIndex(Int32(index))
         return point
     }
     
+    /// Remove all points.
     public func removeAll() {
         _polygon.removeAll()
     }
@@ -104,10 +114,8 @@ extension Polygon : MutableCollectionType {
 
 extension Polygon : CustomStringConvertible, CustomDebugStringConvertible {
     
-    /// A textual representation of `self`.
     public var description: String { return Array(self).description }
     
-    /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "Polygon\(self)" }
 }
 
@@ -115,10 +123,13 @@ extension Polygon : CustomStringConvertible, CustomDebugStringConvertible {
 
 final public class Clipper {
     
+    /// Constructs and returns the union of a polygon with a polygon.
     public class func unionPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
         return unionPolygons([polygon1], withPolygons: [polygon2])
     }
     
+    /// Constructs and returns the union of an array of polygons with an
+    /// array of polygons.
     public class func unionPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
         return _Clipper.unionPolygons(polygons1.map { $0._polygon }, withPolygons: polygons2.map { $0._polygon }).map {
             let polygon = Polygon()
@@ -127,10 +138,13 @@ final public class Clipper {
         }
     }
     
+    /// Constructs and returns the difference of a polygon from a polygon.
     public class func differencePolygon(polygon1: Polygon, fromPolygon polygon2: Polygon) -> [Polygon] {
         return differencePolygons([polygon1], fromPolygons: [polygon2])
     }
     
+    /// Constructs and returns the difference of an array of polygons
+    /// from an array of polygons.
     public class func differencePolygons(polygons1: [Polygon], fromPolygons polygons2: [Polygon]) -> [Polygon] {
         return _Clipper.differencePolygons(polygons1.map { $0._polygon }, fromPolygons: polygons2.map { $0._polygon }).map {
             let polygon = Polygon()
@@ -139,10 +153,13 @@ final public class Clipper {
         }
     }
     
+     /// Constructs and returns the intersection of a polygon with a polygon.
     public class func intersectPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
         return intersectPolygons([polygon1], withPolygons: [polygon2])
     }
     
+    /// Constructs and returns the intersection of an array of polygons
+    /// with an array of polygons.
     public class func intersectPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
         return _Clipper.intersectPolygons(polygons1.map { $0._polygon }, withPolygons: polygons2.map { $0._polygon }).map {
             let polygon = Polygon()
@@ -151,10 +168,14 @@ final public class Clipper {
         }
     }
     
+    /// Constructs and returns the XOR boolean operation of a polygon with
+    /// a polygon.
     public class func xorPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
         return xorPolygons([polygon1], withPolygons: [polygon2])
     }
     
+    /// Constructs and returns the XOR boolean operation of an array of polygons
+    /// with an array of polygons.
     public class func xorPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
         return _Clipper.xorPolygons(polygons1.map { $0._polygon }, withPolygons: polygons2.map { $0._polygon }).map {
             let polygon = Polygon()

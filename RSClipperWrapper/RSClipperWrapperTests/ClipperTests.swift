@@ -73,6 +73,21 @@ class ClipperTests: XCTestCase {
         XCTAssert(polygons.first!.contains(CGPoint(x: 0, y: 1)))
         XCTAssert(polygons.first!.contains(CGPoint(x: 1, y: 1)))
         XCTAssert(polygons.first!.contains(CGPoint(x: 1, y: 0)))
+        
+        polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 3), CGPoint(x: 3, y: 3), CGPoint(x: 3, y: 0)]
+        polygon2 = [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 2), CGPoint(x: 2, y: 2), CGPoint(x: 2, y: 1)]
+        
+        polygons = Clipper.differencePolygon(polygon1, fromPolygon: polygon2)
+        XCTAssertFalse(polygons.isEmpty)
+        XCTAssertEqual(polygons.count, 2)
+        XCTAssert(polygons.first!.contains(CGPoint(x: 0, y: 0)))
+        XCTAssert(polygons.first!.contains(CGPoint(x: 0, y: 3)))
+        XCTAssert(polygons.first!.contains(CGPoint(x: 3, y: 3)))
+        XCTAssert(polygons.first!.contains(CGPoint(x: 3, y: 0)))
+        XCTAssert(polygons.last!.contains(CGPoint(x: 1, y: 1)))
+        XCTAssert(polygons.last!.contains(CGPoint(x: 1, y: 2)))
+        XCTAssert(polygons.last!.contains(CGPoint(x: 2, y: 2)))
+        XCTAssert(polygons.last!.contains(CGPoint(x: 2, y: 1)))
     }
     
     func testIntersect() {

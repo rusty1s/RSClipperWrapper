@@ -12,6 +12,8 @@
 		61643F801B74D04100989DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61643F7F1B74D04100989DD4 /* Assets.xcassets */; };
 		61643F951B74D10000989DD4 /* RSClipperWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61643F901B74D08F00989DD4 /* RSClipperWrapper.framework */; };
 		61643F971B74D12900989DD4 /* RSClipperWrapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 61643F901B74D08F00989DD4 /* RSClipperWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		61BDB21A1B7806E6000AD3D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BDB2191B7806E6000AD3D1 /* ViewController.swift */; };
+		61BDB21D1B780710000AD3D1 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BDB21C1B780710000AD3D1 /* Scene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		61643F7F1B74D04100989DD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61643F841B74D04100989DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61643F8A1B74D08E00989DD4 /* RSClipperWrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RSClipperWrapper.xcodeproj; path = ../RSClipperWrapper/RSClipperWrapper.xcodeproj; sourceTree = "<group>"; };
+		61BDB2191B7806E6000AD3D1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		61BDB21C1B780710000AD3D1 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				61643F781B74D04100989DD4 /* AppDelegate.swift */,
+				61BDB2191B7806E6000AD3D1 /* ViewController.swift */,
+				61BDB21C1B780710000AD3D1 /* Scene.swift */,
 				61643F7C1B74D04100989DD4 /* Main.storyboard */,
 				61643F7F1B74D04100989DD4 /* Assets.xcassets */,
 				61643F841B74D04100989DD4 /* Info.plist */,
@@ -204,7 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61BDB21A1B7806E6000AD3D1 /* ViewController.swift in Sources */,
 				61643F791B74D04100989DD4 /* AppDelegate.swift in Sources */,
+				61BDB21D1B780710000AD3D1 /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +362,7 @@
 				61643F891B74D04100989DD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
