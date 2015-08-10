@@ -11,6 +11,9 @@
 /// A `Polygon` is an ordered list that contains elements of type `CGPoint`.
 /// The `Polygon` class is built as a wrapper of `std::vector` in C++ and
 /// therefore should not be used otherwise as clipping polygons.
+///
+/// `Polygon` behaves just like the `Array` implementation in Swift except
+/// that it can only hold points of the type `CGPoint`.
 final public class Polygon : ArrayLiteralConvertible {
     
     // MARK: Associated types
@@ -174,13 +177,13 @@ final public class Clipper {
         }
     }
     
-    /// Constructs and returns the XOR boolean operation of a polygon with
+    /// Constructs and returns the exclusive-or boolean operation of a polygon with
     /// a polygon.
     public class func xorPolygon(polygon1: Polygon, withPolygon polygon2: Polygon) -> [Polygon] {
         return xorPolygons([polygon1], withPolygons: [polygon2])
     }
     
-    /// Constructs and returns the XOR boolean operation of an array of polygons
+    /// Constructs and returns the exclusive-or boolean operation of an array of polygons
     /// with an array of polygons.
     public class func xorPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon] {
         return _Clipper.xorPolygons(polygons1.map { $0._polygon }, withPolygons: polygons2.map { $0._polygon }).map {

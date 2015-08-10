@@ -31,6 +31,45 @@ in your Podfile and run `pod install`.
 
 ## Documentation
 
+### Polygon
+
+	class Polygon { ... }
+
+A `Polygon` is an ordered list that contains elements of type `CGPoint`. The `Polygon` class is built as a wrapper of `std::vector` in C++ and therefore should not be used otherwise as clipping polygons.
+
+`Polygon` behaves just like the `Array` implementation in Swift except that it can only hold points of the type `CGPoint`.
+
+#### Protocol inheritance
+
+* `SequenceType`
+* `MutableCollectionType`
+* `ArrayLiteralConvertible`
+* `CustomStringConvertible/CustomDebugStringConvertible` 
+
+### Clipper
+
+	class Clipper { ... }
+
+The `Clipper` class performs polygon clipping -  union, difference, intersection & exclusive-or.
+
+#### Static methods
+
+	class func unionPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon]
+
+Constructs and returns the union of an array of polygons with an array of polygons.
+
+	class func differencePolygons(polygons1: [Polygon], fromPolygons polygons2: [Polygon]) -> [Polygon]
+
+Constructs and returns the difference of an array of polygons from an array of polygons.
+
+	class func intersectPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon]
+
+Constructs and returns the intersection of an array of polygons with an array of polygons.
+
+	class func xorPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon]
+
+Constructs and returns the exclusive-or boolean operation of an array of polygons with an array of polygons.
+
 ## Additional information
 
 `RSClipperWrapper` was developed and implemented for the use in *Dig Deeper - the Mining / Crafting / Trading game*. *Dig Depper* is currently in developement and has its own *GitHub* project [here](../../../DigDeeper).
