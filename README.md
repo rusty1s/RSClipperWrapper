@@ -6,7 +6,7 @@
 
 ![alt Union](union.png)
 ![alt Difference](difference.png)
-![alt Intersection](intersection.png)
+![alt Intersection](intersect.png)
 ![alt Xor](xor.png)
 
 ## Example
