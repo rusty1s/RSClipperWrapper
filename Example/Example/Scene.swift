@@ -35,6 +35,7 @@ class Scene : SKScene {
         clipperNode.strokeColor = SKColor.whiteColor()
         clipperNode.lineWidth = 1
         clipperNode.fillColor = SKColor.redColor()
+        clipperNode.zPosition = -1
         clipperNode.path = CGPath.pathOfPolygons(clipperPolygon)
         addChild(clipperNode)
     }

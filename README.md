@@ -1,5 +1,18 @@
 # RSClipperWrapper
 
+`RSClipperWrapper` is a small and simple wrapper for [Clipper](http://www.angusj.com/delphi/clipper.php) - an open source freeware library for clipping polygons - by Angus Johnson implemented in **Swift 2.0**. The original *Clipper* sources of version 6.1.2 are distributed. *Clipper* is fast, has no errors even on complex polygons (inclusive holes) and comes with the [Boost Software License](http://www.boost.org/LICENSE_1_0.txt) and thus is free for both open source and commerical applications.
+
+`RSClipperWrapper` contains two classes `Polygon` and `Clipper` for building polygons and to perform polygon clipping - intersection, union, difference & exclusive-or.
+
+![alt Union](union.png)
+![alt Difference](difference.png)
+![alt Intersection](intersection.png)
+![alt Xor](xor.png)
+
+## Example
+
+`RSClipperWrapper` contains an example project, where you can play around with the four different ways of clipping polygons.
+
 ## Installation
 
 `RSClipperWrapper` is not yet released on CocoaPod. Instead use
@@ -11,6 +24,8 @@ pod 'RSClipperWrapper', :git => 'https://github.com/rusty1s/RSClipperWrapper.git
 ```
 
 in your Podfile and run `pod install`.
+
+## Documentation
 
 ## Additional information
 
