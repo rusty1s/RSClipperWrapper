@@ -124,8 +124,8 @@ extension Polygon : CustomStringConvertible, CustomDebugStringConvertible {
 
 // MARK: Clipper
 
-/// The `Clipper` class performs polygon clipping - intersection, union,
-/// difference & exclusive-or. `Clipper` is built as a wrapper of the open source
+/// The `Clipper` class performs polygon clipping -  union, difference,
+/// intersection & exclusive-or. `Clipper` is built as a wrapper of the open source
 /// Clipper library written in C++ by Angus Johnson.
 final public class Clipper {
     

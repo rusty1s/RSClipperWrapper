@@ -15,16 +15,17 @@ class Scene : SKScene {
     let polygon2: Polygon = [CGPoint(x: -25, y: -25), CGPoint(x: -25, y: 50), CGPoint(x: 50, y: 50), CGPoint(x: 50, y: -25)]
     
     override func didMoveToView(view: SKView) {
+        backgroundColor = SKColor.whiteColor()
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         let polygonNode1 = SKShapeNode()
-        polygonNode1.strokeColor = SKColor.whiteColor()
+        polygonNode1.strokeColor = SKColor.blackColor()
         polygonNode1.lineWidth = 1
         polygonNode1.path = CGPath.pathOfPolygons([polygon1])
         addChild(polygonNode1)
         
         let polygonNode2 = SKShapeNode()
-        polygonNode2.strokeColor = SKColor.whiteColor()
+        polygonNode2.strokeColor = SKColor.blackColor()
         polygonNode2.lineWidth = 1
         polygonNode2.path = CGPath.pathOfPolygons([polygon2])
         addChild(polygonNode2)
@@ -32,8 +33,7 @@ class Scene : SKScene {
         let clipperPolygon = Clipper.intersectPolygon(polygon1, withPolygon: polygon2)
         
         let clipperNode = SKShapeNode()
-        clipperNode.strokeColor = SKColor.whiteColor()
-        clipperNode.lineWidth = 1
+        clipperNode.lineWidth = 0
         clipperNode.fillColor = SKColor.redColor()
         clipperNode.zPosition = -1
         clipperNode.path = CGPath.pathOfPolygons(clipperPolygon)
