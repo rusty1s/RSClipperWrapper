@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.platform      = :ios, "9.0"
 
   s.source        = { :git => "https://github.com/rusty1s/RSClipperWrapper.git" }
-  s.source_files  = "RSClipperWrapper/RSClipperWrapper/*.swift"
+  s.source_files  = "RSClipperWrapper/RSClipperWrapper/*.{swift,h,mm}", "RSClipperWrapper/RSClipperWrapper/*/*.{hpp,cpp}"
 
 end
