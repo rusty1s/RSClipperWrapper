@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.summary       = "A small and simple wrapper for the Clipper library to perform polygon clipping"
 
   s.description   = <<-DESC
-					RSClipperWrapper is a small and simple wrapper for Clipper - an open source freeware library for clipping polygons - by Angus Johnson implemented in Swift 2.0. The original Clipper sources of version 6.1.2 are distributed. Clipper is fast, has no errors even on complex polygons (inclusive holes) and comes with the Boost Software License and thus is free for both open source and commerical applications.
+					RSClipperWrapper is a small and simple wrapper for Clipper - an open source freeware library for clipping polygons - by Angus Johnson implemented in Swift 2.0. The original Clipper sources of version 6.2.1 are distributed. Clipper is fast, has no errors even on complex polygons (inclusive holes) and comes with the Boost Software License and thus is free for both open source and commerical applications.
 					
 					RSClipperWrapper contains two classes Polygon and Clipper for building polygons and to perform polygon clipping - union, difference, intersection & exclusive-or.
                     DESC
