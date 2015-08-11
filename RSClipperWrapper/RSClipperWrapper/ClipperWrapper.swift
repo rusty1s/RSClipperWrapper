@@ -120,7 +120,7 @@ extension Polygon : MutableCollectionType {
 
 extension Polygon : CustomStringConvertible, CustomDebugStringConvertible {
     
-    public var description: String { return Array(self).description }
+    public var description: String { return "\(Array(self))" }
     
     public var debugDescription: String { return "Polygon\(self)" }
 }

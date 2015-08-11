@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.author        = { "Rusty1s" => "matthias.fey@tu-dortmund.de" }
 
-  s.platform      = :ios, "9.0"
+  s.platform      = :ios, "8.0"
 
   s.source        = { :git => "https://github.com/rusty1s/RSClipperWrapper.git" }
   s.source_files  = "RSClipperWrapper/RSClipperWrapper/*.{swift,h,mm}", "RSClipperWrapper/RSClipperWrapper/*/*.{hpp,cpp}"
