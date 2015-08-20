@@ -49,8 +49,6 @@
 //use_deprecated: Enables temporary support for the obsolete functions
 //#define use_deprecated  
 
-#ifdef __cplusplus
-
 #include <vector>
 #include <set>
 #include <stdexcept>
@@ -59,8 +57,6 @@
 #include <ostream>
 #include <functional>
 #include <queue>
-
-#endif
 
 namespace ClipperLib {
 
