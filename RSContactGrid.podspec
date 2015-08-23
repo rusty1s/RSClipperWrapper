@@ -21,5 +21,6 @@ Pod::Spec.new do |s|
 
   s.source        = { :git => "https://github.com/rusty1s/RSClipperWrapper.git" }
   s.source_files  = "RSClipperWrapper/RSClipperWrapper/*.{swift,h,mm}", "RSClipperWrapper/RSClipperWrapper/*/*.{hpp,cpp}"
+  s.private_header_files = "RSClipperWrapper/RSClipperWrapper/*/*.hpp"
 
 end
