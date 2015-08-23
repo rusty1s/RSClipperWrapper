@@ -10,7 +10,7 @@
 		613DF09A1B74CFD80003F595 /* RSClipperWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 613DF0991B74CFD80003F595 /* RSClipperWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		613DF0A11B74CFD80003F595 /* RSClipperWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613DF0961B74CFD80003F595 /* RSClipperWrapper.framework */; };
 		61643F9F1B74D29300989DD4 /* clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61643F9D1B74D29300989DD4 /* clipper.cpp */; };
-		61643FA01B74D29300989DD4 /* clipper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 61643F9E1B74D29300989DD4 /* clipper.hpp */; };
+		61643FA01B74D29300989DD4 /* clipper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 61643F9E1B74D29300989DD4 /* clipper.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		61643FA21B74D59800989DD4 /* ClipperWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 61643FA11B74D59800989DD4 /* ClipperWrapper.mm */; };
 		61643FA51B74D5D700989DD4 /* ClipperWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61643FA41B74D5D700989DD4 /* ClipperWrapper.swift */; };
 		61643FA71B74EB2600989DD4 /* ClipperWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 61643FA31B74D5AC00989DD4 /* ClipperWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };

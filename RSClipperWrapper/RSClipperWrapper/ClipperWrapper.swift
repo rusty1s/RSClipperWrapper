@@ -6,6 +6,8 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
+import UIKit
+
 // MARK: Polygon
 
 /// A `Polygon` is an ordered list that contains elements of type `CGPoint`.
