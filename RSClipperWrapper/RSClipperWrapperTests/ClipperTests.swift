@@ -12,10 +12,10 @@ import RSClipperWrapper
 class ClipperTests: XCTestCase {
 
     func testUnion() {
-        var polygon1: Polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
-        var polygon2: Polygon = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
+        var polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
+        var polygon2 = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
         
-        var polygons = Clipper.unionPolygon(polygon1, withPolygon: polygon2)
+        var polygons = Clipper.unionPolygons([polygon1], withPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 1)
         
@@ -34,7 +34,7 @@ class ClipperTests: XCTestCase {
         polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
         polygon2 = [CGPoint(x: 2, y: 2), CGPoint(x: 2, y: 3), CGPoint(x: 3, y: 3), CGPoint(x: 3, y: 2)]
         
-        polygons = Clipper.unionPolygon(polygon1, withPolygon: polygon2)
+        polygons = Clipper.unionPolygons([polygon1], withPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 2)
         XCTAssertFalse(polygons.first!.isEmpty)
@@ -44,10 +44,10 @@ class ClipperTests: XCTestCase {
     }
     
     func testDifference() {
-        var polygon1: Polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
-        var polygon2: Polygon = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
+        var polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
+        var polygon2 = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
         
-        var polygons = Clipper.differencePolygon(polygon1, fromPolygon: polygon2)
+        var polygons = Clipper.differencePolygons([polygon1], fromPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 1)
         
@@ -64,7 +64,7 @@ class ClipperTests: XCTestCase {
         polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
         polygon2 = [CGPoint(x: 2, y: 2), CGPoint(x: 2, y: 3), CGPoint(x: 3, y: 3), CGPoint(x: 3, y: 2)]
         
-        polygons = Clipper.differencePolygon(polygon1, fromPolygon: polygon2)
+        polygons = Clipper.differencePolygons([polygon1], fromPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 1)
         XCTAssertFalse(polygons.first!.isEmpty)
@@ -77,7 +77,7 @@ class ClipperTests: XCTestCase {
         polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 3), CGPoint(x: 3, y: 3), CGPoint(x: 3, y: 0)]
         polygon2 = [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 2), CGPoint(x: 2, y: 2), CGPoint(x: 2, y: 1)]
         
-        polygons = Clipper.differencePolygon(polygon1, fromPolygon: polygon2)
+        polygons = Clipper.differencePolygons([polygon1], fromPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 2)
         XCTAssert(polygons.first!.contains(CGPoint(x: 0, y: 0)))
@@ -91,10 +91,10 @@ class ClipperTests: XCTestCase {
     }
     
     func testIntersect() {
-        var polygon1: Polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
-        var polygon2: Polygon = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
+        var polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
+        var polygon2 = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
         
-        var polygons = Clipper.intersectPolygon(polygon1, withPolygon: polygon2)
+        var polygons = Clipper.intersectPolygons([polygon1], withPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 1)
         
@@ -109,16 +109,16 @@ class ClipperTests: XCTestCase {
         polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
         polygon2 = [CGPoint(x: 2, y: 2), CGPoint(x: 2, y: 3), CGPoint(x: 3, y: 3), CGPoint(x: 3, y: 2)]
         
-        polygons = Clipper.intersectPolygon(polygon1, withPolygon: polygon2)
+        polygons = Clipper.intersectPolygons([polygon1], withPolygons: [polygon2])
         XCTAssert(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 0)
     }
 
     func testXor() {
-        var polygon1: Polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
-        var polygon2: Polygon = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
+        var polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
+        var polygon2 = [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0.5, y: 1.5), CGPoint(x: 1.5, y: 1.5), CGPoint(x: 1.5, y: 0.5)]
         
-        var polygons = Clipper.xorPolygon(polygon1, withPolygon: polygon2)
+        var polygons = Clipper.xorPolygons([polygon1], withPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 2)
         XCTAssertEqual(polygons.first!.count, 6)
@@ -127,7 +127,7 @@ class ClipperTests: XCTestCase {
         polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0)]
         polygon2 = [CGPoint(x: 2, y: 2), CGPoint(x: 2, y: 3), CGPoint(x: 3, y: 3), CGPoint(x: 3, y: 2)]
         
-        polygons = Clipper.xorPolygon(polygon1, withPolygon: polygon2)
+        polygons = Clipper.xorPolygons([polygon1], withPolygons: [polygon2])
         XCTAssertFalse(polygons.isEmpty)
         XCTAssertEqual(polygons.count, 2)
         XCTAssertEqual(polygons.first!.count, 4)

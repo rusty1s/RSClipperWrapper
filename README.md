@@ -2,7 +2,7 @@
 
 `RSClipperWrapper` is a small and simple wrapper for [Clipper](http://www.angusj.com/delphi/clipper.php) - an open source freeware library for clipping polygons - by Angus Johnson implemented in **Swift**. The original *Clipper* sources of version 6.2.1 are distributed. *Clipper* is fast, has no errors even on complex polygons (inclusive holes) and comes with the [Boost Software License](http://www.boost.org/LICENSE_1_0.txt) and thus is free for both open source and commerical applications.
 
-`RSClipperWrapper` contains two classes `Polygon` and `Clipper` for building polygons and to perform polygon clipping - **union**, **difference**, **intersection** & **exclusive-or**.
+`RSClipperWrapper` contains the `Clipper` class to perform clipping on any amount of polygons - **union**, **difference**, **intersection** & **exclusive-or**.
 
 ![alt Union](union.png)
 ![alt Difference](difference.png)
@@ -11,8 +11,8 @@
 
 ## Example
 
-1. Construct `Polygon` classes, e.g.: `let polygon1: Polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 10, y: 10), CGPoint(x: 20, 0)]`
-2. Use on of the static functions of the `Clipper` class to perform a polygon clipping, e.g.: `Clipper.intersectPolygon(polygon1, withPolygon: polygon2)`
+1. Construct polygons, e.g.: `let polygon1 = [CGPoint(x: 0, y: 0), CGPoint(x: 10, y: 10), CGPoint(x: 20, 0)]`
+2. Use on of the static functions of the `Clipper` class to perform a polygon clipping, e.g.: `Clipper.intersectPolygons([polygon1], withPolygons: [polygon2])`
 3. That's it!
 
 `RSClipperWrapper` contains an example project where you can play around with the four different ways of clipping polygons.
@@ -31,43 +31,27 @@ in your Podfile and run `pod install`.
 
 ## Documentation
 
-### Polygon
-
-	class Polygon { ... }
-
-A `Polygon` is an ordered list that contains elements of type `CGPoint`. The `Polygon` class is built as a wrapper of `std::vector` in C++ and therefore should not be used otherwise as clipping polygons.
-
-`Polygon` behaves just like the `Array` implementation in Swift except that it can only hold points of the type `CGPoint`.
-
-#### Protocol inheritance
-
-* `SequenceType`
-* `CollectionType`
-* `MutableCollectionType`
-* `ArrayLiteralConvertible`
-* `CustomStringConvertible`/`CustomDebugStringConvertible` 
-
 ### Clipper
 
 	class Clipper { ... }
 
-The `Clipper` class performs polygon clipping -  union, difference, intersection & exclusive-or.
+The `Clipper` class performs polygon clipping -  union, difference, intersection & exclusive-or. A set of polygons are represented as `[[CGPoint]]` - an array of polygons and a polygon is defined as a finite sequence of `CGPoint`.
 
 #### Static methods
 
-	class func unionPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon]
+	class func unionPolygons(polygons1: [[CGPoint]], withPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
 
 Constructs and returns the union of an array of polygons with an array of polygons.
 
-	class func differencePolygons(polygons1: [Polygon], fromPolygons polygons2: [Polygon]) -> [Polygon]
+	class func differencePolygons(polygons1: [[CGPoint]], fromPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
 
 Constructs and returns the difference of an array of polygons from an array of polygons.
 
-	class func intersectPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon]
+	class func intersectPolygons(polygons1: [[CGPoint]], withPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
 
 Constructs and returns the intersection of an array of polygons with an array of polygons.
 
-	class func xorPolygons(polygons1: [Polygon], withPolygons polygons2: [Polygon]) -> [Polygon]
+	class func xorPolygons(polygons1: [[CGPoint]], withPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
 
 Constructs and returns the exclusive-or boolean operation of an array of polygons with an array of polygons.
 

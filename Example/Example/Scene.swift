@@ -11,8 +11,8 @@ import RSClipperWrapper
 
 class Scene : SKScene {
     
-    let polygon1: Polygon = [CGPoint(x: -50, y: -50), CGPoint(x: -50, y: 25), CGPoint(x: 25, y: 25), CGPoint(x: 25, y: -50)]
-    let polygon2: Polygon = [CGPoint(x: -25, y: -25), CGPoint(x: -25, y: 50), CGPoint(x: 50, y: 50), CGPoint(x: 50, y: -25)]
+    let polygon1 = [CGPoint(x: -50, y: -50), CGPoint(x: -50, y: 25), CGPoint(x: 25, y: 25), CGPoint(x: 25, y: -50)]
+    let polygon2 = [CGPoint(x: -25, y: -25), CGPoint(x: -25, y: 50), CGPoint(x: 50, y: 50), CGPoint(x: 50, y: -25)]
     
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.whiteColor()
@@ -30,7 +30,7 @@ class Scene : SKScene {
         polygonNode2.path = CGPath.pathOfPolygons([polygon2])
         addChild(polygonNode2)
         
-        let clipperPolygon = Clipper.intersectPolygon(polygon1, withPolygon: polygon2)
+        let clipperPolygon = Clipper.intersectPolygons([polygon1], withPolygons: [polygon2])
         
         let clipperNode = SKShapeNode()
         clipperNode.lineWidth = 0
@@ -43,7 +43,7 @@ class Scene : SKScene {
 
 extension CGPath {
     
-    class func pathOfPolygons(polygons: [Polygon]) -> CGPath {
+    class func pathOfPolygons(polygons: [[CGPoint]]) -> CGPath {
         let path = CGPathCreateMutable()
         for polygon in polygons {
             for (index, point) in polygon.enumerate() {
