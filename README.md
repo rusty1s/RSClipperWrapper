@@ -37,23 +37,38 @@ in your Podfile and run `pod install`.
 
 The `Clipper` class performs polygon clipping -  union, difference, intersection & exclusive-or. A set of polygons are represented as `[[CGPoint]]` - an array of polygons and a polygon is defined as a finite sequence of `CGPoint`.
 
+#### Enumerations
+
+	FillType
+
+The winding rule used to present a polygon.
+
+	enum FillType {
+        case EvenOdd
+        case NonZero
+        case Positive
+        case Negative
+    }
+
 #### Static methods
 
-	class func unionPolygons(polygons1: [[CGPoint]], withPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
+	class func unionPolygons(subjPolygons: [[CGPoint]], subjFillType: FillType, withPolygons clipPolygons: [[CGPoint]], clipFillType: FillType) -> [[CGPoint]]
 
 Constructs and returns the union of an array of polygons with an array of polygons.
 
-	class func differencePolygons(polygons1: [[CGPoint]], fromPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
+	class func differencePolygons(subjPolygons: [[CGPoint]], subjFillType: FillType, fromPolygons clipPolygons: [[CGPoint]], clipFillType: FillType) -> [[CGPoint]]
 
 Constructs and returns the difference of an array of polygons from an array of polygons.
 
-	class func intersectPolygons(polygons1: [[CGPoint]], withPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
+	class func intersectPolygons(subjPolygons: [[CGPoint]], subjFillType: FillType, withPolygons clipPolygons: [[CGPoint]], clipFillType: FillType) -> [[CGPoint]]
 
 Constructs and returns the intersection of an array of polygons with an array of polygons.
 
-	class func xorPolygons(polygons1: [[CGPoint]], withPolygons polygons2: [[CGPoint]]) -> [[CGPoint]]
+	class func xorPolygons(subjPolygons: [[CGPoint]], subjFillType: FillType, withPolygons clipPolygons: [[CGPoint]], clipFillType: FillType) -> [[CGPoint]]
 
 Constructs and returns the exclusive-or boolean operation of an array of polygons with an array of polygons.
+
+The default values for `subjFillType` and `clipFillType` are `EvenOdd`.
 
 ## Additional information
 
