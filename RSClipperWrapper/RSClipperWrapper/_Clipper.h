@@ -21,5 +21,6 @@ typedef NS_ENUM(NSInteger, _FillType) {
 + (NSArray *) differencePolygons:(NSArray *)subjPolygons subjFillType:(_FillType)subjFillType fromPolygons:(NSArray *)clipPolygons clipFillType:(_FillType)clipFillType;
 + (NSArray *) intersectPolygons:(NSArray *)subjPolygons subjFillType:(_FillType)subjFillType withPolygons:(NSArray *)clipPolygons clipFillType:(_FillType)clipFillType;
 + (NSArray *) xorPolygons:(NSArray *)subjPolygons subjFillType:(_FillType)subjFillType withPolygons:(NSArray *)clipPolygons clipFillType:(_FillType)clipFillType;
++ (Boolean) polygon:(NSArray *)polygon containsPoint:(CGPoint)point;
 
 @end

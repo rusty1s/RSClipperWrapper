@@ -56,4 +56,9 @@ final public class Clipper {
         
         return (_Clipper.xorPolygons(subjPolygons.map { $0.map { NSValue(CGPoint: $0) } } as [AnyObject], subjFillType: subjFillType.mapped, withPolygons: clipPolygons.map { $0.map { NSValue(CGPoint: $0) } } as [AnyObject], clipFillType: clipFillType.mapped) as! [[NSValue]]).map { $0.map { $0.CGPointValue() } }
         }
+    
+    /// Checks and Returns if a polygon contains a point
+    public class func polygonContainsPoint(polygon: [CGPoint], point:CGPoint) -> Bool {
+        return _Clipper.polygon(polygon.map { NSValue(CGPoint: $0) }, containsPoint: point)
+    }
 }

@@ -38,6 +38,10 @@ class Scene : SKScene {
         clipperNode.zPosition = -1
         clipperNode.path = CGPath.pathOfPolygons(clipperPolygon)
         addChild(clipperNode)
+        
+        let pt = CGPointMake(0, 0)
+        let inPoly = Clipper.polygonContainsPoint(clipperPolygon[0], point: pt)
+        NSLog(inPoly ? "point is in poly" : "point is not in poly")
     }
 }
 

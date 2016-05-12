@@ -107,4 +107,18 @@
     return polygons;
 }
 
++ (Boolean) polygon:(NSArray *)polygon containsPoint:(CGPoint)point {
+    
+    ClipperLib::IntPoint aPoint = ClipperLib::IntPoint(kClipperScale*point.x, kClipperScale*point.y);
+    
+    ClipperLib::Path path;
+    for (NSValue *vertex : polygon) {
+        path.push_back(ClipperLib::IntPoint(kClipperScale*vertex.CGPointValue.x, kClipperScale*vertex.CGPointValue.y));
+    }
+    
+    int result = ClipperLib::PointInPolygon(aPoint, path);
+    
+    return result != 0;
+}
+
 @end
