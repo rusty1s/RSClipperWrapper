@@ -17,11 +17,11 @@ class ViewController: UIViewController {
         let skView = self.view as! SKView
         let scene = Scene(size: view.bounds.size)
         
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         skView.presentScene(scene)
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
 }

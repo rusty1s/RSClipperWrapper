@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "RSClipperWrapper"
-  s.version       = "1.2"
+  s.version       = "1.3"
   s.summary       = "A small and simple wrapper for the Clipper library to perform polygon clipping"
 
   s.description   = <<-DESC
