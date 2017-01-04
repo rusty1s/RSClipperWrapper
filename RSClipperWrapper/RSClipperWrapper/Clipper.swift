@@ -22,7 +22,7 @@ final public class Clipper {
         fileprivate var mapped: _FillType {
             switch self {
                 case .evenOdd: return _FillType.EvenOdd
-                case .nonZero: return _FillType.Negative
+                case .nonZero: return _FillType.NonZero
                 case .positive: return _FillType.Positive
                 case .negative: return _FillType.Negative
             }
